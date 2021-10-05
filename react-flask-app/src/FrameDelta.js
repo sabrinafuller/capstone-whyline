@@ -9,63 +9,47 @@ class FrameDelta extends React.Component {
       
       super(props);
       //this.name.bind("name")
+      
         this.state = {  
-          name: "first name",
+          name: props.name,
           id : props.id,
-          data:  "defualt"
+          data:  "",
+          count: props.count,
+         // move: props.move
 
         };
+        //this.move =  this.move.bind(this);
+        //props.move = this.move.bind(this)
       }
       
         // Include the api call
         //this.handleClick = this.handleClick.bind(this);
         //const [getMessage, setGetMessage]= useState({})
-        useEffect = ()=>{
-          
-          axios.get('http://localhost:5000/flask/hello').then(response => {
-            console.log("SUCCESS", response)
-            const d = response.data.total
-            this.setState({data:d})
-            
-            
-          }).catch(error => {
-            console.log(error)
-          }
-          )
-        
-        };
+       
       handleClickForward = () => {  
         alert("messages")  
         this.setState({name : "Next Frame"})
         }
 
-        move = (text) => {
-          //alert(text)
-          if(text ==="Forward"){
-            alert("Step forward")
-            this.setState({ name: "Step Forward" }); 
 
-          }
-          else{
-            alert("Step back")
-            this.useEffect()
-            alert(this.data)
-            
       
-            ///requests.get('http://localhost:3000/whyline')
-            this.setState({ name: "Step Backwards" }); 
-          }
+    
+      handleChange(event) { this.setState({name: "first"})
+       alert("moving forward   "+ this.state.count);
+        event.preventDefault(); }
+        
           
-        } 
+        
+        
       
     render() {
       
       return   (<>
       
-      <button onClick={ () => { this.move(this.state.id)}  }>
-       move {this.id}
+      <button onClick={ () => { this.props.move(this.state.id)}  }>
+      Move {this.state.id}
     </button> 
-    {this.data}
+    
         
     </>)
 
