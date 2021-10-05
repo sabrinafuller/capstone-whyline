@@ -9,11 +9,11 @@ class UserCode extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
         
       }
-      handleChange(event) {    this.setState({code_text: event.target.code_text});  }
-      handleSubmit(event) {
-       /// alert('code' + this.state.code_text);
-        event.preventDefault();
-      }
+      handleChange(event) {    this.setState({code_text: event.target.value});  }
+    
+      handleSubmit(event) { this.setState({code_text: event.target.code_text})
+       alert("submitting:   "+ this.state.code_text);
+        event.preventDefault(); }
       
     
       render() {
@@ -25,7 +25,8 @@ class UserCode extends React.Component {
           Your code here: 
           <textarea value={this.state.code_text} onChange={this.handleChange} />
           </label>
-    <input type="submit" code_text="" value = "submit" />
+    <input type="submit" value="Submit" onSubmit = {this.handleSubmit} />
+    
       </form>
         </> 
       )
