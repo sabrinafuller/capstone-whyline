@@ -31,7 +31,7 @@ class UserCode extends React.Component {
         // Update the formData object
         formData.append(
           'file',
-          this.state.code_text
+          this.state.code_text,
           
         );
           const t = "test data"
@@ -40,7 +40,8 @@ class UserCode extends React.Component {
         const h = {'Access-Control-Allow-Origin': 'http://localhost/api/uploadfile',
         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH', 
         'Access-Control-Allow-Credentials': 'True' };
-      axios.post('http://localhost:5000/api/uploadfile', {data: h}, {headers:h})
+
+      axios.post('http://localhost:5000/api/uploadfile', formData, {headers:h})
       .catch(error => console.log(error));
     
 
