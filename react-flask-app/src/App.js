@@ -6,23 +6,38 @@ import FrameDelta from "./FrameDelta"
 import my_element from "./my_element"
 import UserCode from './UserCode'
 class  App extends React.Component{
+
+
+
   
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.move = this.move.bind(this);
+    ///this.handleSubmitCode = this.handleSubmitCode(this)
     
     this.state = {user_input: '', 
-                  current_frame: 0};
+                  current_frame: 0,
+                user_file: null };
   }
   
+  onFileChange = event => {
+    
+    // Update the state
+    this.setState({ user_file: event.target.files[0] });
+  
+  };
   handleSubmit(e) {
-    this.setState({user_code: e.target.value});  
+    this.setState({user_input: e.target.value});
+  
     e.preventDefault();}
     updateCount(e){
-      this.setState({current_frame: this.state.current_frame})
+      this.setState({current_frame: this.state.current_frame+1})
     }
+    handleSubmitCode(event) { this.setState({user_input: event.target.user_input})
+    alert("submitting:   "+ this.state.user_input);
+     event.preventDefault(); }
 
     handleChange(e) { this.setState({current_frame :  e.current_frame});  }
     move  (text) {
@@ -49,7 +64,7 @@ class  App extends React.Component{
         alert("at beginning of program")
       }
     } ; 
-
+   
     
 
     
@@ -65,13 +80,12 @@ class  App extends React.Component{
     
     <div class="grid-container">
    
-    
    
       <div class="right"  >
       <FrameDelta frame1 id={"Forward"} count = {this.state.current_frame} move = {this.move.bind(this)} /> 
       </div>
       <div class="middle"  >
-      <UserCode user_code  handleSubmit={this.handleSubmit} /> </div>
+      <UserCode user_code   /> </div>
       
       
       
@@ -81,7 +95,19 @@ class  App extends React.Component{
         
       
       </div>
-      <div class = "footer">frame_data here</div>
+      <div class = "footer">
+      <div class="slidecontainer">
+  
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> 
+  </input>
+  
+
+        </div>
+     
+     
+   
+      </div>
+    
     
 </div></>
   ); 

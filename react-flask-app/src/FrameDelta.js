@@ -38,6 +38,7 @@ class FrameDelta extends React.Component {
        alert("moving forward   "+ this.state.count);
         event.preventDefault(); }
         
+        
           
         
         
