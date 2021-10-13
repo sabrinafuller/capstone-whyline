@@ -5,6 +5,7 @@ import axios from 'axios'
 import FrameDelta from "./FrameDelta"
 import my_element from "./my_element"
 import UserCode from './UserCode'
+import CodeOutput from './CodeOutput';
 class  App extends React.Component{
 
 
@@ -86,7 +87,7 @@ class  App extends React.Component{
       </div>
       <div class="middle"  >
       <UserCode user_code   /> </div>
-      
+      //////<CodeOutput c />
       
       
       <div class="left"  >
